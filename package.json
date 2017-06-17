@@ -1,0 +1,23 @@
+{
+  "name": "status",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/vainglorygame/status.git"
+  },
+  "author": "schneefux",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://gitlab.com/vainglorygame/status/issues"
+  },
+  "homepage": "https://gitlab.com/vainglorygame/status#README",
+  "dependencies": {
+    "connect": "^3.6.2",
+    "server-static": "^2.0.5"
+  }
+}
