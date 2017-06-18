@@ -3,10 +3,10 @@ set timefmt "%Y-%m-%dT%H:%M:%SZ";
 set xdata time;
 set ytics nomirror;
 set ylabel "number of telemetry objects within 3h";
-set autoscale y;
 set y2tics;
 set y2label "number of player/match objects within 3h";
-set autoscale y2;
+
+set autoscale;
 
 set datafile separator ", ";
 
