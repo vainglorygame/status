@@ -6,7 +6,7 @@ set ylabel "transaction duration in ms";
 set yrange [ 0:300 ];
 set y2tics;
 set y2label "number of transactions within 3h";
-set y2range [ 0:3000 ];
+set autoscale y2;
 
 set datafile separator ", ";
 
