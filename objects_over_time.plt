@@ -13,6 +13,6 @@ set datafile separator ", ";
 set terminal png noenhanced;
 set key autotitle columnhead;
 set output outputfile;
-plot inputfile using "date":"players_count" with lines axes x1y2, \
-     inputfile using "date":"matches_count" with lines axes x1y2, \
-     inputfile using "date":"telemetries_count" with lines axes x1y1;
+plot inputfile using "date":"players_sum" with lines axes x1y2, \
+     inputfile using "date":"matches_sum" with lines axes x1y2, \
+     inputfile using "date":"telemetries_sum" with lines axes x1y1;

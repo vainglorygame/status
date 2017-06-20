@@ -74,7 +74,7 @@ find $LOGS -name "processor-out*__????-??-??_??-??-??.log"\
     | mlr --fs ", " \
           --ocsv \
           put '$date = sec2gmt(gmt2sec($date) // (60*60*3) * (60*60*3));' \
-          then stats1 -a count -f players,matches,telemetries -g date \
+          then stats1 -a sum -f players,matches,telemetries -g date \
           then sort -f date \
     | grep -v "1970" \
     >> $PF.csv
