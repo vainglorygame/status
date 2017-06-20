@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATA=$(dirname "$0")/data
-LOGS="/home/timo/vainsocial/logs/logs/pm2"
+LOGS=${VAINSOCIAL_LOGS:="/home/timo/vainsocial/logs/logs/pm2"}
 mkdir -p $DATA || exit 0
 
 PF=$DATA/apigrabber_processed  # progress file
