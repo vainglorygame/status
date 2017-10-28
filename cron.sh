@@ -6,11 +6,11 @@ mkdir -p $DATA || exit 0
 
 PF=$DATA/apigrabber_processed  # progress file
 touch $PF $PF.csv
-find $LOGS -name "apigrabber-out*__????-??-??_??-??-??.log"\
+find $LOGS -name "apigrabber-out*__????-??-??_??-??-??.log.gz"\
     | sort\
     | comm -13 $PF - \
     | tee -a $PF \
-    | xargs grep -h "connection_end"\
+    | xargs zgrep -h "connection_end"\
     | sed -E 's_^(.*?) - .*? API response _date=\1, _g' \
     | mlr --fs ", " \
           --ocsv \
@@ -25,11 +25,11 @@ gnuplot -e "inputfile='$PF.csv'; outputfile='$PF.png';" $DATA/../connection_end_
 
 PF=$DATA/apigrabber_error_processed  # progress file
 touch $PF $PF.csv
-find $LOGS -name "apigrabber-error*__????-??-??_??-??-??.log"\
+find $LOGS -name "apigrabber-error*__????-??-??_??-??-??.log.gz"\
     | sort\
     | comm -13 $PF - \
     | tee -a $PF \
-    | xargs grep -h " API error "\
+    | xargs zgrep -h " API error "\
     | sed -E 's_^(.*?) - .*? API error _date=\1, _g' \
     | mlr --fs ", " \
           --ocsv \
@@ -44,11 +44,11 @@ gnuplot -e "inputfile='$PF.csv'; outputfile='$PF.png';" $DATA/../errors_over_tim
 
 PF=$DATA/processor_processed  # progress file
 touch $PF $PF.csv
-find $LOGS -name "processor-out*__????-??-??_??-??-??.log"\
+find $LOGS -name "processor-out*__????-??-??_??-??-??.log.gz"\
     | sort\
     | comm -13 $PF - \
     | tee -a $PF \
-    | xargs grep -h " database transaction " \
+    | xargs zgrep -h " database transaction " \
     | sed -E 's_^(.*?) - .*? database transaction _date=\1, _g' \
     | mlr --fs ", " \
           --ocsv \
@@ -65,11 +65,11 @@ gnuplot -e "inputfile='$PF.csv'; outputfile='$PF.png';" $DATA/../transactions_ov
 
 PF=$DATA/processor_batch_processed  # progress file
 touch $PF $PF.csv
-find $LOGS -name "processor-out*__????-??-??_??-??-??.log"\
+find $LOGS -name "processor-out*__????-??-??_??-??-??.log.gz"\
     | sort\
     | comm -13 $PF - \
     | tee -a $PF \
-    | xargs grep -h " processing batch " \
+    | xargs zgrep -h " processing batch " \
     | sed -E 's_^(.*?) - .*? processing batch _date=\1, _g' \
     | mlr --fs ", " \
           --ocsv \
